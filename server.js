@@ -44,12 +44,14 @@ app.get("/scrape", function(req, res) {
       var result = {};
 
       // Add the text and href of every link, and save them as properties of the result object
-       result.date = $(element)
+       dateArr = $(element)
         .children("div.bbox")
         .children("h1")
         .text()
-      //   .split("/");
-      // result.date = dateArr[0];
+        .split("/");
+      
+      result.date = dateArr[0];
+    
       result.event = $(element)
         .children("div.bbox")
         .children("h1.title")
