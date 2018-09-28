@@ -1,14 +1,29 @@
       body { 
-        background: url(https://media.giphy.com/media/MAUbpVEKzxPdC/giphy.gif);
+        background: url(https://media.giphy.com/media/12G7r0udPHMTS/giphy.gif);
         background-size: 100%;
-        color: whitesmoke;
+        color: #aaaaaa;
+        text-align: center;
       }
-      #wrapper {
-        width: 960px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-top: 5%;
+      #song-name {
+        color: #1a472a;
       }
+      #artist-name {
+        color: #2a623d;
+      }
+      #label-name {
+        color: #5d5d5d;
+      }
+      .row {
+        justify-content: center;
+        overflow: scroll;
+      }
+
+      .card {
+        background-color: #000000;
+        opacity: 0.5;
+        margin: 10px;
+      }
+
       #notes {
         float: right;
         width: 30%;

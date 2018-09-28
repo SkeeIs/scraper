@@ -53,6 +53,8 @@ app.get("/scrape", function(req, res) {
         .children("span.top-ten-track-artists")
         .children("a")
         .text();
+        // .match(/[A-Z][a-z]+|[0-9]+/g)
+        // .join(" ");
 
         result.artistLink = "https://www.beatport.com" + $(element)
           .children("span.top-ten-track-artists")
@@ -84,7 +86,7 @@ app.get("/scrape", function(req, res) {
         .then(function(dbShow) {
           // View the added result in the console
           console.log(dbShow);
-          res.redirect("/");
+          
         })
         .catch(function(err) {
           // If an error occurred, send it to the client
@@ -93,7 +95,7 @@ app.get("/scrape", function(req, res) {
     });
 
     // If we were able to successfully scrape and save an Article, send a message to the client
-    res.send("Scrape Complete");
+    res.redirect("/");
   });
 });
 

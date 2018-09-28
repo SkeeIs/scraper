@@ -4,16 +4,18 @@
    
   <div class="col">
     
-    <ul class="shows row">
+    <div class="row">
         {{#each shows}}
-        <li class="col-md-auto">
-          <a href="{{this.songLink}}" target="_blank"><p>{{this.title}}</p></a>
-          <a href="{{this.artistLink}}" target="_blank"><p>{{this.artist}}</p></a>
-           <a href="{{this.labelLink}}" target="_blank"><p>{{this.label}}</p></a>
-        </li>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <a id="song-name" href="{{this.songLink}}" target="_blank"><h5 class="card-title">{{this.title}}</h5></a>
+            <a id="artist-name" href="{{this.artistLink}}" target="_blank"><h6 class="card-subtitle mb-2 text-muted">{{this.artist}}</h6></a>
+            <a id="label-name" href="{{this.labelLink}}" target="_blank"><p class="card-text">{{this.label}}</p></a>
+            <a href="#" class="card-link like-track">Like Track</a>
+            <a href="#" class="card-link add-note">Add Note</a>
+          </div>
+        </div>
         {{/each}}
-    </ul>
-  
-  </div>
+    </div>
 
 </div>
