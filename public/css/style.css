@@ -1,8 +1,14 @@
       body { 
         background: url(https://media.giphy.com/media/12G7r0udPHMTS/giphy.gif);
+        height: 100vh;
         background-size: 100%;
+        background-repeat: no-repeat;
         color: #aaaaaa;
         text-align: center;
+      }
+      .container {
+        height: 100vh;
+        overflow: scroll;
       }
       #song-name {
         color: #1a472a;
@@ -14,16 +20,25 @@
         color: #5d5d5d;
       }
       .row {
+        height: 100%;
+        display: flex;
         justify-content: center;
         overflow: scroll;
       }
 
       .card {
         background-color: #000000;
-        opacity: 0.5;
+        opacity: 0.58;
         margin: 10px;
       }
 
+      .navbar {
+        background-color: #000000;
+        opacity: 0.5;
+        height: 60px;
+        width: 80%;
+      }
+/* 
       #notes {
         float: right;
         width: 30%;
@@ -40,4 +55,4 @@
       textarea {
         height: 200px;
         font-size: 18px;
-      }
+      } */

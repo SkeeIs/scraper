@@ -1,11 +1,24 @@
 <div class="container">
   
   <h1>Top Twenty Dance Tracks</h1>
-   
+  
+  <hr>
+  
   <div class="col">
     
     <div class="row">
-        {{#each shows}}
+      <nav class="navbar">
+        <div class="container">
+          <a class="navbar-brand scrape-link" href="http://localhost:3000/scrape">Scrape</a>
+          <a class="navbar-brand delete-link" href="http://localhost:3000/scrape">Delete</a>
+        </div>
+      </nav>
+    </div>
+   
+   <hr>
+
+    <div class="row">
+        {{#each songs}}
         <div class="card" style="width: 18rem;">
           <div class="card-body">
             <a id="song-name" href="{{this.songLink}}" target="_blank"><h5 class="card-title">{{this.title}}</h5></a>
