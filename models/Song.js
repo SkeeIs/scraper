@@ -5,31 +5,33 @@ var Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
-var ShowSchema = new Schema({
+var SongSchema = new Schema({
   // `title` is required and of type String
   artist: {
     type: String,
-    // required: true
+    required: true
   },
   artistLink: {
     type: String,
+    required: true
   },
   // //`event` is required and of type String
   title: {
     type: String,
-    // required: true
+    required: true
   },
   songLink: {
     type: String,
+    required: true
   },
   // //`link` is required and of type String
   label: {
     type: String,
-    // required: true
+    required: true
   },
   labelLink: {
     type: String,
-    // required: true
+    required: true
   },
 
   // `note` is an object that stores a Note id
@@ -42,7 +44,7 @@ var ShowSchema = new Schema({
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var Show = mongoose.model("Show", ShowSchema);
+var Song = mongoose.model("Song", SongSchema);
 
 // Export the Article model
-module.exports = Show;
+module.exports = Song;
