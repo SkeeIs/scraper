@@ -26,6 +26,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
 
+// Require Handlebars.
+var exhbs = require("express-handlebars");
+app.engine("handlebars", exhbs({defaultLayout: "main"}));
+app.set("view engine", "handlebars");
+
 // Connect to the Mongo DB
 mongoose.connect("mongodb://localhost/scrapeMongoose", { useNewUrlParser: true });
 
@@ -82,6 +87,7 @@ app.get("/scrape", function(req, res) {
         .then(function(dbShow) {
           // View the added result in the console
           console.log(dbShow);
+          res.redirect("/");
         })
         .catch(function(err) {
           // If an error occurred, send it to the client
@@ -92,6 +98,17 @@ app.get("/scrape", function(req, res) {
     // If we were able to successfully scrape and save an Article, send a message to the client
     res.send("Scrape Complete");
   });
+});
+
+app.get("/", function(req, res) {
+  db.Show.find({})
+    .then(function(dbShow) {
+      res.render("index",{shows:dbShow})
+    })
+    .catch(function(err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
 });
 
 // Route for getting all Articles from the db

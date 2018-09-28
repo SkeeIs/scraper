@@ -1,0 +1,24 @@
+<div class="container">
+  
+  <h1>Upcoming Bicep Shows</h1>
+   
+  <div class="col">
+    
+    <ul class="shows row">
+        {{#each shows}}
+        <li class="col">
+          <a href="{{this.link}}">
+            <img class="show-img" src="{{this.img}}">
+          </a>
+        
+          <h4>{{this.event}}</h4>
+            
+          <p>{{this.date}}</p>
+          <p>{{this.location}}</p>
+        </li>
+        {{/each}}
+    </ul>
+  
+  </div>
+
+</div>
