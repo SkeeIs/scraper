@@ -1,20 +1,15 @@
 <div class="container">
   
-  <h1>Upcoming Bicep Shows</h1>
+  <h1>Top Twenty Dance Tracks</h1>
    
   <div class="col">
     
     <ul class="shows row">
         {{#each shows}}
-        <li class="col">
-          <a href="{{this.link}}">
-            <img class="show-img" src="{{this.img}}">
-          </a>
-        
-          <h4>{{this.event}}</h4>
-            
-          <p>{{this.date}}</p>
-          <p>{{this.location}}</p>
+        <li class="col-md-auto">
+          <a href="{{this.songLink}}" target="_blank"><p>{{this.title}}</p></a>
+          <a href="{{this.artistLink}}" target="_blank"><p>{{this.artist}}</p></a>
+           <a href="{{this.labelLink}}" target="_blank"><p>{{this.label}}</p></a>
         </li>
         {{/each}}
     </ul>

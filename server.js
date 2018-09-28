@@ -39,47 +39,44 @@ mongoose.connect("mongodb://localhost/scrapeMongoose", { useNewUrlParser: true }
 // A GET route for scraping the echoJS website
 app.get("/scrape", function(req, res) {
   // First, we grab the body of the html with axios
-  axios.get("https://www.residentadvisor.net/dj/bicep/dates/").then(function(response) {
+  axios.get("https://www.beatport.com/").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
 
     // Now, we grab every h2 within an article tag, and do the following:
-    $("article.event-item").each(function(i, element) {
+    $("div.top-ten-track-meta").each(function(i, element) {
       // Save an empty result object
       var result = {};
 
       // Add the text and href of every link, and save them as properties of the result object
-       dateArr = $(element)
-        .children("div.bbox")
-        .children("h1")
-        .text()
-        .split("/");
-      
-      result.date = dateArr[0];
+       result.artist = $(element)
+        .children("span.top-ten-track-artists")
+        .children("a")
+        .text();
+
+        result.artistLink = "https://www.beatport.com" + $(element)
+          .children("span.top-ten-track-artists")
+          .children("a")
+          .attr("href");
     
-      result.event = $(element)
-        .children("div.bbox")
-        .children("h1.title")
-        .children("a")
-        .children("span.title")
+      result.title = $(element)
+        .children("a.top-ten-track-title")
+        .children("span.top-ten-track-primary-title")
         .text();
 
-      result.location = $(element)
-        .children("div.bbox")
-        .children("h1.title")
-        .children("span")
-        .children("a")
-        .text();
-
-      result.link = "https://www.residentadvisor.net" + $(element)
-        .children("a")
+        result.songLink = "https://www.beatport.com" + $(element)
+        .children("a.top-ten-track-title")
         .attr("href");
 
-      result.img ="https://www.residentadvisor.net" + $(element)
+      result.label = $(element)
+        .children("span.top-ten-track-label")
         .children("a")
-        .children("img")
-        .attr("src");
+        .text();
 
+      result.labelLink = "https://www.beatport.com" + $(element)
+        .children("span.top-ten-track-label")
+        .children("a")
+        .attr("href");
 
 
       // Create a new Article using the `result` object built from scraping

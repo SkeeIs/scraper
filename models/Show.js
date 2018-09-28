@@ -7,29 +7,31 @@ var Schema = mongoose.Schema;
 // This is similar to a Sequelize model
 var ShowSchema = new Schema({
   // `title` is required and of type String
-  date: {
+  artist: {
     type: String,
     // required: true
   },
-  //`event` is required and of type String
-  event: {
+  artistLink: {
+    type: String,
+  },
+  // //`event` is required and of type String
+  title: {
     type: String,
     // required: true
   },
-  //`location` is required and of type String
-  location: {
+  songLink: {
+    type: String,
+  },
+  // //`link` is required and of type String
+  label: {
     type: String,
     // required: true
   },
-  //`link` is required and of type String
-  link: {
+  labelLink: {
     type: String,
     // required: true
   },
-  //img is not required and of type String
-  img: {
-    type: String,
-  },
+
   // `note` is an object that stores a Note id
   // The ref property links the ObjectId to the Note model
   // This allows us to populate the Article with an associated Note

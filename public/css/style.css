@@ -1,18 +1,13 @@
       body { 
-        background: url(https://i.ytimg.com/vi/oq2Oq1J6t70/maxresdefault.jpg);
+        background: url(https://media.giphy.com/media/MAUbpVEKzxPdC/giphy.gif);
         background-size: 100%;
+        color: whitesmoke;
       }
       #wrapper {
         width: 960px;
         margin-left: auto;
         margin-right: auto;
         padding-top: 5%;
-      }
-      #articles {
-        display: inline-block;
-        overflow: auto;
-        width: 60%;
-        height: 700px;
       }
       #notes {
         float: right;
