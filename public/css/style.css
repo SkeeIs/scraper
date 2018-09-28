@@ -48,21 +48,8 @@
         height: 100%;
         width: 100%;
       }
-/* 
-      #notes {
-        float: right;
-        width: 30%;
+
+      .liked-track {
+        background-color: #590000;
+        opacity: 0.58;
       }
-      textarea, input {
-        display: block;
-        width: 100%;
-        background-color: #FCF5C7;
-      }
-      input {
-        height: 36px;
-        font-size: 24px;
-      }
-      textarea {
-        height: 200px;
-        font-size: 18px;
-      } */

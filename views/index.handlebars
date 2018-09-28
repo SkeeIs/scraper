@@ -19,35 +19,37 @@
 
     <div class="row">
         {{#each songs}}
-        <div class="card" style="width: 18rem;">
+        <div class="card" data-id="{{this._id}}" style="width: 18rem;">
           <div class="card-body">
             <a id="song-name" href="{{this.songLink}}" target="_blank"><h5 class="card-title">{{this.title}}</h5></a>
             <a id="artist-name" href="{{this.artistLink}}" target="_blank"><h6 class="card-subtitle mb-2 text-muted">{{this.artist}}</h6></a>
             <a id="label-name" href="{{this.labelLink}}" target="_blank"><p class="card-text">{{this.label}}</p></a>
-            <a href="#" class="card-link like-track">Like Track</a>
+            <a href="#" class="card-link like-track" data-id="{{this._id}}">Like Track</a>
             <a href="#" class="card-link add-note" data-id="{{this._id}}" data-toggle="modal" data-target="#exampleModalCenter">Add Note</a>
+          </div>
+        </div>
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Add Note</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <textarea id="notes" name="body"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="save-note">Save Note</button>
+              </div>
+            </div>
           </div>
         </div>
         {{/each}}
     </div>
 
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalCenterTitle">Add Note</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <textarea id="bodyinput" name="body"></textarea>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
 </div>
