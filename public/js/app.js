@@ -1,13 +1,3 @@
-// // Grab the articles as a json
-// $.getJSON("/shows", function(data) {
-//   // For each one
-//   for (var i = 0; i < data.length; i++) {
-//     // Display the apropos information on the page
-//     $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
-//   }
-// });
-
-
 // Whenever someone clicks id save-note tag
 $(document).on("click", ".add-note", function() {
   // Empty the notes from the note section
@@ -69,13 +59,32 @@ $(document).on("click", "#save-note", function() {
 
 $(document).on("click", ".like-track", function() {
   var thisId = $(this).attr("data-id");
-  
-  if ($(".card").attr("data-id") === thisId) { 
-    $(".card").addClass("liked-track");
-  }  
+  var likedStatus;
+  var trackCard = $(this).parent().parent();
+  console.log("LIKED TRACK ID" + thisId);
+
+  if (trackCard.hasClass("liked-track")) {
+    trackCard.removeClass("liked-track");
+    likedStatus = false;
+  }
+  else {
+    trackCard.addClass("liked-track");
+    likedStatus = true;
+  }
 
   $.ajax({
-    method: "POST",
-    url: "/songs/" + thisId + "/liked"
+    method: "GET",
+    url: "/songs/" + thisId + "/liked",
+    data: {
+      
+      body: likedStatus
+    }
   })
 });
+
+$(document).on("click", ".scrape-link", function() {
+  $(".content-render").empty();
+  $.get("/scrape", function() {
+      location.reload(true);
+    });
+})

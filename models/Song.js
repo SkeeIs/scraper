@@ -11,9 +11,20 @@ var SongSchema = new Schema({
     type: String,
     required: true
   },
+  //in case of second artist
+  secondArtist: {
+    type: String,
+    required: false
+  },
+  //for href to the artist beatport page
   artistLink: {
     type: String,
     required: true
+  },
+  //for href to the artist beatport page
+  secondArtistLink: {
+    type: String,
+    required: false
   },
   // //`event` is required and of type String
   title: {
@@ -36,6 +47,11 @@ var SongSchema = new Schema({
   liked: {
     type: Boolean,
     default: false
+  },
+  ts: {
+    type: Date,
+    default: Date.now,
+    required: true,
   },
 
   // `note` is an object that stores a Note id

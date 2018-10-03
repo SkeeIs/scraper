@@ -3,7 +3,7 @@
         height: 100vh;
         background-size: 100%;
         background-repeat: no-repeat;
-        color: #aaaaaa;
+        color: #3E6990;
         text-align: center;
       }
       .container {
@@ -14,10 +14,10 @@
         color: #1a472a;
       }
       #artist-name {
-        color: #2a623d;
+        color: #3E6990;
       }
       #label-name {
-        color: #5d5d5d;
+        color: #F39B6D;
       }
       .row {
         height: 100%;
@@ -26,22 +26,27 @@
         overflow: scroll;
       }
 
+      .btn {
+        background-color: #1a472a;
+        color:  #F39B6D;
+      }
+
       .card {
-        background-color: #000000;
-        opacity: 0.58;
+        background-color: #E9E3B4;
+        opacity: 0.5;
         margin: 10px;
       }
 
       .navbar {
-        background-color: #000000;
+        background-color: #E9E3B4;
         opacity: 0.5;
         height: 60px;
         width: 80%;
       }
 
       .modal {
-        background-color: #000000;
-        opacity: 0.58;
+        background-color: #E9E3B4;
+        opacity: 0.5;
       }
 
       #bodyinput {
@@ -51,5 +56,5 @@
 
       .liked-track {
         background-color: #590000;
-        opacity: 0.58;
+        opacity: 0.5;
       }

@@ -49,24 +49,38 @@ app.get("/scrape", function(req, res) {
       var result = {};
 
       // Add the text and href of every link, and save them as properties of the result object
-       result.artist = $(element)
+      result.artist = $(element)
         .children("span.top-ten-track-artists")
         .children("a")
+        .eq(0)
         .text();
-        // .match(/[A-Z][a-z]+|[0-9]+/g)
-        // .join(" ");
 
-        result.artistLink = "https://www.beatport.com" + $(element)
-          .children("span.top-ten-track-artists")
-          .children("a")
-          .attr("href");
+      result.secondArtist =  $(element)
+        .children("span.top-ten-track-artists")
+        .children("a")
+        .eq(1)
+        .text();
+
+      result.artistLink = "https://www.beatport.com" + 
+        $(element)
+        .children("span.top-ten-track-artists")
+        .children("a")
+        .eq(0)
+        .attr("href");
+
+      result.secondArtistLink = "https://www.beatport.com" + 
+        $(element)
+        .children("span.top-ten-track-artists")
+        .children("a")
+        .eq(1)
+        .attr("href");
     
       result.title = $(element)
         .children("a.top-ten-track-title")
         .children("span.top-ten-track-primary-title")
         .text();
 
-        result.songLink = "https://www.beatport.com" + $(element)
+      result.songLink = "https://www.beatport.com" + $(element)
         .children("a.top-ten-track-title")
         .attr("href");
 
@@ -78,7 +92,7 @@ app.get("/scrape", function(req, res) {
       result.labelLink = "https://www.beatport.com" + $(element)
         .children("span.top-ten-track-label")
         .children("a")
-        .attr("href");
+        .attr("href");  
 
 
       // Create a new Article using the `result` object built from scraping
@@ -161,15 +175,9 @@ app.post("/songs/:id/note", function(req, res) {
 });
 
 // Route for saving/updating an Article's associated Note
-app.post("/songs/:id/liked", function(req, res) {
+app.get("/songs/:id/liked", function(req, res) {
   // Create a new note and pass the req.body to the entry
-  db.Song.create(req.body)
-    .then(function(dbNote) {
-      // If a Note was created successfully, find one Article with an `_id` equal to `req.params.id`. Update the Article to be associated with the new Note
-      // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
-      // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-      return db.Song.findOneAndUpdate({ _id: req.params.id }, { liked: true }, { new: true });
-    })
+  db.Song.findOneAndUpdate({ _id: req.params.id }, { liked: req.body })
     .then(function(dbSong) {
       // If we were able to successfully update an Article, send it back to the client
       res.json(dbSong);
