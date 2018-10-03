@@ -79,12 +79,20 @@ $(document).on("click", ".like-track", function() {
       
       body: likedStatus
     }
+
   })
+
 });
 
 $(document).on("click", ".scrape-link", function() {
   $(".content-render").empty();
   $.get("/scrape", function() {
+      location.reload(true);
+    });
+});
+
+$(document).on("click", ".delete-link", function() {
+  $.delete("/clear", function() {
       location.reload(true);
     });
 })
